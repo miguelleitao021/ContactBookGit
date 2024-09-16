@@ -90,6 +90,7 @@ public class ContactBook {
         return result;
     }
 
+
     private void resize() {
         Contact tmp[] = new Contact[2*contacts.length];
         for (int i=0;i<counter; i++)
