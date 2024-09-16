@@ -114,4 +114,17 @@ public class ContactBook {
         return contacts[searchIndexByPhoneNumber(phoneNumber)];
     }
 
+    public boolean hasSamePhoneNumber (){
+        for(int i=0; i<counter; i++){
+            for(int j=0; j<counter; j++){
+                if(i != j){
+                    if(contacts[i].getPhone() == contacts[j].getPhone()){
+                        return true;
+                    }
+                }
+
+            }
+        }
+        return false;
+    }
 }
