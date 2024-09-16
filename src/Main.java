@@ -15,6 +15,10 @@ public class Main {
     public static final String LIST_CONTACTS  = "LC";
     public static final String QUIT           = "Q";
 
+    public static final String GIVEN_PHONE = "GN";
+
+    public static final String EQUAL_PHONE = "EP";
+
     //Constantes que definem as mensagens para o utilizador
     public static final String CONTACT_EXISTS = "contactBook.Contact already exists.";
     public static final String NAME_NOT_EXIST = "contactBook.Contact does not exist.";
@@ -24,6 +28,11 @@ public class Main {
     public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
+
+    public static final String GIVEN_MSG = "Phone number does not exist.";
+    public static final String SHARE_MSG = "There are contacts that share phone numbers.";
+    public static final String DIFFERENT_MSG = "All contacts have different phone numbers.";
+
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -52,6 +61,12 @@ public class Main {
                     break;
                 case LIST_CONTACTS:
                     listAllContacts(cBook);
+                    break;
+                case GIVEN_PHONE:
+                    givePhone(in,cBook);
+                    break;
+                case EQUAL_PHONE:
+                    equalPhone(cBook);
                     break;
                 default:
                     System.out.println(COMMAND_ERROR);
@@ -146,5 +161,23 @@ public class Main {
             }
         }
         else System.out.println(BOOK_EMPTY);
+    }
+    private static void givePhone( Scanner in, ContactBook cBook){
+        int phone = in.nextInt();
+        in.nextLine();
+
+        if(cBook.hasContactByPhoneNumber(phone)){
+            System.out.println(cBook.getContact(phone));
+        }
+
+        else System.out.println(GIVEN_MSG);
+    }
+
+    private static void equalPhone(ContactBook cBook){
+        if(cBook.hasSamePhoneNumber()){
+            System.out.println(SHARE_MSG);
+        }
+
+        else System.out.println(DIFFERENT_MSG);
     }
 }

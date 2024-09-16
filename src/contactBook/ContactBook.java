@@ -111,8 +111,8 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
-    public Contact getContact(int phoneNumber) {
-        return contacts[searchIndexByPhoneNumber(phoneNumber)];
+    public String getContact(int phoneNumber) {
+        return contacts[searchIndexByPhoneNumber(phoneNumber)].getName();
     }
 
     public boolean hasSamePhoneNumber (){
